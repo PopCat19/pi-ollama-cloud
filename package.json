@@ -1,0 +1,10 @@
+{
+  "name": "pi-ollama-cloud",
+  "version": "1.0.0",
+  "description": "Pi extension: dynamic model discovery with thinking-level support for ollama.com cloud API",
+  "keywords": ["pi-package"],
+  "license": "MIT",
+  "pi": {
+    "extensions": ["./extensions"]
+  }
+}
