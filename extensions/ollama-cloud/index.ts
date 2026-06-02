@@ -1,3 +1,13 @@
+// index.ts
+//
+// Purpose: Discover ollama.com cloud models at startup and register them with Pi
+//
+// This module:
+// - Fetches the live catalog from https://ollama.com/api/tags
+// - Classifies each model (thinking, vision, context window, max tokens) via heuristic tables
+// - Registers the resolved list with pi.registerProvider('ollama', ...)
+// - Logs a warning for model ids that fall through to the unknown-default buckets
+
 import type { ExtensionAPI, ProviderModelConfig } from "@earendil-works/pi-coding-agent";
 
 // ---------------------------------------------------------------------------
@@ -12,6 +22,7 @@ const THINKING_PATTERNS: (string | RegExp)[] = [
   /^kimi-k2/,             // kimi-k2, kimi-k2.5, kimi-k2.6, kimi-k2-thinking
   /^glm-5/,               // glm-5, glm-5.1
   /^gemini-(2|3)/,        // gemini-2.5, gemini-3-*
+  /^minimax-m/,           // minimax-m2, m2.1, m2.5, m2.7, m3 (per ollama library pages)
 ];
 
 /** Model ID patterns for vision / image input. */
@@ -25,6 +36,7 @@ const VISION_PATTERNS: (string | RegExp)[] = [
   /^gpt-oss/,             // all GPT-OSS support vision
   /^ministral-3/,         // Mistral multimodal
   /^cogito-2\.1/,         // cogito-2.1:671b supports vision
+  /^minimax-m/,           // minimax-m series is natively multimodal
 ];
 
 /** Known context-window sizes keyed by model id (exact match first, then prefix). */
@@ -38,6 +50,7 @@ const EXACT_CONTEXT_WINDOWS: Record<string, number> = {
   "kimi-k2-thinking": 256_000,
   "glm-5": 198_000,
   "glm-5.1": 198_000,
+  "minimax-m3": 524_288, // ollama library page: 512K guaranteed, 1M max
 };
 
 const PREFIX_CONTEXT_WINDOWS: [string, number][] = [
@@ -73,6 +86,11 @@ function resolveContextWindow(id: string): number {
   for (const [prefix, w] of PREFIX_CONTEXT_WINDOWS) {
     if (id.startsWith(prefix)) return w;
   }
+  // ollama.com/api/tags omits context window; the library page is the only source.
+  // Any id reaching this branch is missing from the heuristic tables and may be wrong.
+  console.warn(
+    `[ollama-cloud] unknown context window for "${id}", defaulting to 128_000 – check https://ollama.com/library/${id}`,
+  );
   return 128_000;
 }
 
