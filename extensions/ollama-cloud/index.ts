@@ -143,7 +143,7 @@ export default async function (pi: ExtensionAPI) {
 
     pi.registerProvider("ollama", {
       baseUrl: "https://ollama.com/v1",
-      apiKey: "OLLAMA_API_KEY",
+      apiKey: "$OLLAMA_API_KEY",
       api: "openai-completions",
       models,
     });
