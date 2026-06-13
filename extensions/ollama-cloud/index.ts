@@ -48,6 +48,7 @@ const EXACT_CONTEXT_WINDOWS: Record<string, number> = {
   "kimi-k2.5": 256_000,
   "kimi-k2.6": 256_000,
   "kimi-k2-thinking": 256_000,
+  "kimi-k2.7-code": 256_000,
   "glm-5": 198_000,
   "glm-5.1": 198_000,
   "minimax-m3": 524_288, // ollama library page: 512K guaranteed, 1M max
@@ -68,6 +69,7 @@ const PREFIX_CONTEXT_WINDOWS: [string, number][] = [
   ["minimax-m2", 262_144],
   ["glm-4", 128_000],
   ["nemotron-3", 131_072],
+  ["kimi-k2", 256_000],
   ["cogito-2", 262_144],
   ["devstral", 131_072],
   ["rnj-1", 131_072],
