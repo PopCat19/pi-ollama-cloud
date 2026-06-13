@@ -13,7 +13,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GH_TOKEN }}
 
       - run: node .github/scripts/refresh-models.mjs
