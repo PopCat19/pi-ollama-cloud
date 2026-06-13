@@ -52,6 +52,20 @@ const EXACT_CONTEXT_WINDOWS: Record<string, number> = {
   "glm-5": 198_000,
   "glm-5.1": 198_000,
   "minimax-m3": 524_288, // ollama library page: 512K guaranteed, 1M max
+  "deepseek-v3.2": 160_000, // 160K
+  "glm-4.6": 198_000, // 198K
+  ["deepseek-v3", 160_000],
+  ["glm", 198_000],
+  ["minimax-m2", 198_000],
+  ["nemotron", 256_000],
+  ["mistral-large", 256_000],
+  "glm-4.7": 198_000, // 198K
+  "minimax-m2": 200_000, // 200K
+  "minimax-m2.5": 198_000, // 198K
+  "minimax-m2.1": 200_000, // 200K
+  "nemotron-3-ultra": 256_000, // 256K
+  "minimax-m2.7": 200_000, // 200K
+  "mistral-large-3:675b": 256_000, // 256K
 };
 
 const PREFIX_CONTEXT_WINDOWS: [string, number][] = [
@@ -213,3 +227,4 @@ function buildModelConfig(entry: OllamaModelEntry): ProviderModelConfig {
 
   return cfg;
 }
+
