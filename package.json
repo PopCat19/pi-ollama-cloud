@@ -4,7 +4,20 @@
   "description": "Pi extension: dynamic model discovery with thinking-level support for ollama.com cloud API",
   "keywords": ["pi-package"],
   "license": "MIT",
+  "scripts": {
+    "lint": "bash ./scripts/lint.sh",
+    "lint:fix": "bash ./scripts/lint-fix.sh"
+  },
   "pi": {
     "extensions": ["./extensions"]
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.9",
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.1.0",
+    "eslint-plugin-security": "^4.0.1",
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^8.57.1",
+    "@types/node": "^22.0.0"
   }
 }

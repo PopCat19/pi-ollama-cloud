@@ -1,0 +1,49 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.4.16/schema.json",
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"correctness": {
+				"noConstantCondition": "off",
+				"noUnusedVariables": "warn",
+				"noUnusedImports": "warn",
+				"noUndeclaredVariables": "off",
+				"useParseIntRadix": "warn"
+			},
+			"suspicious": {
+				"noExplicitAny": "warn",
+				"noDoubleEquals": "warn",
+				"noBitwiseOperators": "off",
+				"noGlobalIsNan": "warn",
+				"noEmptyBlockStatements": "warn",
+				"noTemplateCurlyInString": "warn",
+				"noEvolvingTypes": "warn",
+				"noImplicitAnyLet": "warn",
+				"useIterableCallbackReturn": "warn"
+			},
+			"complexity": {
+				"useLiteralKeys": "warn",
+				"noBannedTypes": "warn",
+				"noUselessTernary": "warn",
+				"noStaticOnlyClass": "warn"
+			},
+			"style": {
+				"noNonNullAssertion": "off",
+				"useTemplate": "warn",
+				"useImportType": "off",
+				"useExponentiationOperator": "warn"
+			}
+		}
+	},
+	"formatter": {
+		"enabled": true,
+		"indentStyle": "tab",
+		"indentWidth": 4,
+		"lineWidth": 160
+	},
+	"files": {
+		"maxSize": 5242880,
+		"includes": ["extensions/**/*.ts"]
+	}
+}
