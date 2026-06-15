@@ -1,17 +1,17 @@
 # pi-ollama-cloud
 
-Pi extension — dynamic model discovery with thinking-level support for [ollama.com](https://ollama.com) cloud API.
+Pi extension, dynamic model discovery with thinking-level support for [ollama.com](https://ollama.com) cloud API.
 
 Fetches the live model catalog from `https://ollama.com/api/tags` at startup and registers all available models via `pi.registerProvider()`. Falls back to `models.json` when the API is unreachable.
 
 ## Features
 
-- **Dynamic model list** — no manual `models.json` upkeep; 39+ models auto-discovered
-- **Thinking-level support** — maps Pi thinking levels (off→xhigh) to Ollama's `reasoning_effort` (none/low/medium/high)
-- **Streaming reasoning** — `delta.reasoning` in streamed chat completions, handled natively by Pi's OpenAI-compat parser
-- **Vision detection** — models supporting image input get `input: ["text", "image"]`
-- **Context windows** — per-model context sizes resolved via lookup table
-- **Graceful fallback** — keeps whatever `models.json` provides when `/api/tags` is down
+- **Dynamic model list**, no manual `models.json` upkeep; 39+ models auto-discovered
+- **Thinking-level support**, maps Pi thinking levels (off→xhigh) to Ollama's `reasoning_effort` (none/low/medium/high)
+- **Streaming reasoning**, `delta.reasoning` in streamed chat completions, handled natively by Pi's OpenAI-compat parser
+- **Vision detection**, models supporting image input get `input: ["text", "image"]`
+- **Context windows**, per-model context sizes resolved via lookup table
+- **Graceful fallback**, keeps whatever `models.json` provides when `/api/tags` is down
 
 ## Thinking-level mapping
 
