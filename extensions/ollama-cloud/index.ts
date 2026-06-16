@@ -20,7 +20,7 @@ const THINKING_PATTERNS: (string | RegExp)[] = [
 	/^qwen3/, // qwen3-vl, qwen3-coder, qwen3-next, qwen3.5, etc.
 	/^gpt-oss/, // gpt-oss:20b, gpt-oss:120b
 	/^kimi-k2/, // kimi-k2, kimi-k2.5, kimi-k2.6, kimi-k2-thinking
-	/^glm-5/, // glm-5, glm-5.1
+	/^glm-5/, // glm-5, glm-5.1, glm-5.2
 	/^gemini-(2|3)/, // gemini-2.5, gemini-3-*
 	/^minimax-m/, // minimax-m2, m2.1, m2.5, m2.7, m3 (per ollama library pages)
 ];
@@ -31,7 +31,7 @@ const VISION_PATTERNS: (string | RegExp)[] = [
 	/^gemma[34]/, // gemma3, gemma4
 	/^gemini-(2|3)/, // gemini-2.5, gemini-3
 	/^kimi-k2/, // kimi-k2*, all multimodal
-	/^glm-5/, // glm-5, glm-5.1
+	/^glm-5/, // glm-5, glm-5.1, glm-5.2
 	/^qwen3-vl/, // explicit VL models
 	/^gpt-oss/, // all GPT-OSS support vision
 	/^ministral-3/, // Mistral multimodal
@@ -51,6 +51,7 @@ const EXACT_CONTEXT_WINDOWS: Record<string, number> = {
 	"kimi-k2.7-code": 256_000,
 	"glm-5": 198_000,
 	"glm-5.1": 198_000,
+	"glm-5.2": 976_000, // ollama library page metric: 976K
 	"minimax-m3": 524_288, // ollama library page: 512K guaranteed, 1M max
 };
 

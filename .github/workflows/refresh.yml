@@ -12,6 +12,14 @@ jobs:
   refresh:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
+
+      # The runner has no default git identity, so `git commit` in
+      # refresh-models.mjs fails with "empty ident name". Configure the
+      # canonical GitHub Actions bot identity before running the script.
+      - name: Configure git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
       - run: node .github/scripts/refresh-models.mjs
